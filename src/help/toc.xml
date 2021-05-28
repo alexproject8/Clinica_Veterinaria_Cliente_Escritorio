@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<toc version="1.0">
+   <tocitem text="Portada" target="pag_portada"/>
+   <tocitem text="Prologo" target="pag_prologo"/>
+   <tocitem text="Tabla de contenidos" target="pag_contenido">
+       <tocitem text="Gestión de clientes" target="pag_gestion_cliente">
+            <tocitem text="Alta Cliente" target="pag_alta_cliente"/>
+            <tocitem text="Modificar Cliente" target="pag_modificar_cliente"/>
+            <tocitem text="Baja Cliente" target="pag_baja_cliente"/>
+            <tocitem text="Consulta Cliente" target="pag_consulta_cliente"/>
+            <tocitem text="Generar Factura" target="pag_generar_factura"/>
+       </tocitem>
+       <tocitem text="Gestión de mascotas" target="pag_gestion_mascota">
+            <tocitem text="Alta Mascota" target="pag_alta_mascota"/>
+            <tocitem text="Eliminar Mascota" target="pag_eliminar_mascota"/>
+            <tocitem text="Consulta Mascota" target="pag_consulta_mascota"/>
+            <tocitem text="Consulta Historial" target="pag_consulta_historial"/>
+            <tocitem text="Alta Historial" target="pag_alta_historial"/>
+       </tocitem>
+       <tocitem text="Gestión de citas" target="pag_gestion_cita">
+            <tocitem text="Consulta Citas" target="pag_consulta_cita"/>
+            <tocitem text="Modificar Cita" target="pag_modificar_cita"/>
+            <tocitem text="Anular Cita" target="pag_anular_cita"/>
+       </tocitem>
+       <tocitem text="Cerrar Sesión o Aplicación" target="pag_cerrar_sesion_o_aplicacion"/>
+   </tocitem>
+   <tocitem text="Sección FAQ" target="pag_seccionFAQ"/>
+</toc>

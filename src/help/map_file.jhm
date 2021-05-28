@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN" "http://java.sun.com/products/javahelp/map_2_0.dtd">
+<map version="1.0">
+   <mapID target="pag_portada" url="html/portada.html" />
+   <mapID target="pag_prologo" url="html/prologo.html" />
+   
+   <mapID target="pag_pagcontenido" url="html/pagcontenido.html" />
+   <mapID target="pag_seccionFAQ" url="html/seccionFAQ.html" />
+   
+   <mapID target="pag_alta_cliente" url="html/alta_cliente.html" />
+   <mapID target="pag_modificar_cliente" url="html/modificar_cliente.html" />
+   <mapID target="pag_consulta_cliente" url="html/consulta_cliente.html" />
+   <mapID target="pag_baja_cliente" url="html/baja_cliente.html" />
+   <mapID target="pag_generar_factura" url="html/generar_factura.html" />
+   
+   <mapID target="pag_contenido" url="html/contenido.html" />
+   <mapID target="pag_gestion_cliente" url="html/gestion_cliente.html" />
+   <mapID target="pag_gestion_mascota" url="html/gestion_mascota.html" />
+   
+   <mapID target="pag_alta_mascota" url="html/alta_mascota.html" />
+   <mapID target="pag_consulta_mascota" url="html/consulta_mascota.html" />
+   <mapID target="pag_eliminar_mascota" url="html/eliminar_mascota.html" />
+   <mapID target="pag_consulta_historial" url="html/consulta_historial.html" />
+   <mapID target="pag_alta_historial" url="html/alta_historial.html" />
+   
+   <mapID target="pag_consulta_cita" url="html/consulta_cita.html" />
+   <mapID target="pag_anular_cita" url="html/anular_cita.html" />
+   <mapID target="pag_modificar_cita" url="html/modificar_cita.html" />
+   
+   <mapID target="pag_cerrar_sesion_o_aplicacion" url="html/cerrar_sesion_o_aplicacion.html" />
+</map>
