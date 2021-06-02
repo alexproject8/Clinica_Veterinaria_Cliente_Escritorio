@@ -418,6 +418,9 @@ public class PanelConsultaCliente extends javax.swing.JPanel {
                     m.setValueAt(new SimpleDateFormat("dd-MM-yyyy").format(calendario.getDate()), tablaCliente.getSelectedRow(), 8);
                     //agrega el modelo a la jtabla cliente
                     tablaCliente.setModel(m);
+                    
+                    JOptionPane.showMessageDialog(null, "Cliente dado de baja");
+                    
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Hay problemas en la conexión con el servidor");
                 }

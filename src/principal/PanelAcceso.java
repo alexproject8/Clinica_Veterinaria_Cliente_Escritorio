@@ -292,6 +292,8 @@ public class PanelAcceso extends javax.swing.JPanel {
                     btnModificarClave.setText("MODIFICAR CLAVE");
                     lblNuevaClave.setVisible(false);
                     txtNuevaClave.setVisible(false);
+                    btnAcceder.setVisible(true);
+                    btnCancelarClave.setVisible(false);
                     
                     //cierre de output e input
                     out.close();

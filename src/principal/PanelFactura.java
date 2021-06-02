@@ -299,7 +299,7 @@ public class PanelFactura extends javax.swing.JPanel {
 
     private void btnFacturaFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaFechaActionPerformed
         if (calendario3.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Hay problemas en la conexión con el servidor");
+            JOptionPane.showMessageDialog(null, "Debes seleccionar una fecha");
         } else {
             try {
                 sc = new Socket(IP, PUERTO);

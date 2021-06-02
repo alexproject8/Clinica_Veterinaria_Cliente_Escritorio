@@ -230,51 +230,58 @@ public class PanelConsultaHistorial extends javax.swing.JPanel {
     }//GEN-LAST:event_btnInformeActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        if (tablaHistorial.getSelectedRow() < 1) {
+        if (tablaHistorial.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Debes seleccionar un registro de la tabla");
         } else {
-            try {
-                sc = new Socket(IP, PUERTO);
+            //recoge el modelo de la tabla
+            DefaultTableModel m = (DefaultTableModel) panelConsultaHistorial.tablaHistorial.getModel();
+            String pagado=(String) m.getValueAt(tablaHistorial.getSelectedRow(), 4);
+           
+            if (pagado.equals("No")) {
+                try {
+                    sc = new Socket(IP, PUERTO);
 
-                out = new DataOutputStream(sc.getOutputStream());
-                in = new DataInputStream(sc.getInputStream());
-                //recoge el modelo de la tabla
-                DefaultTableModel m = (DefaultTableModel) panelConsultaHistorial.tablaHistorial.getModel();
-                //guarda el idhistorial de la tabla
-                int idhistorial = (Integer.parseInt((String) m.getValueAt(panelConsultaHistorial.tablaHistorial.getSelectedRow(), 1)));
-                //borra todo lo que contiene la tabla
-                tablaHistorial.removeAll();
-                //añade las columnas al modelo de la tabla
-                String[] columnas = {"", "ID", "Juicio clínico", "Fecha", "Pagado", "ID tratamiento", "ID Mascota", "ID veterinario"};
-                DefaultTableModel modelo = new DefaultTableModel(null, columnas);
-                //envía al servidor el idhistorial y el idmascota
-                out.writeUTF("¿" + idhistorial + "+" + m.getValueAt(tablaHistorial.getSelectedRow(), 6));
-                //recibe el número de líneas
-                int num = in.readInt();
-                inObj = new ObjectInputStream(sc.getInputStream());
-                //bucle para guardar lineas de historial de una mascota
-                for (int i = 0; i < num; i++) {
-                    HistorialClinico hc = (HistorialClinico) inObj.readObject();
+                    out = new DataOutputStream(sc.getOutputStream());
+                    in = new DataInputStream(sc.getInputStream());
+                    
+                    //guarda el idhistorial de la tabla
+                    int idhistorial = (Integer.parseInt((String) m.getValueAt(panelConsultaHistorial.tablaHistorial.getSelectedRow(), 1)));
+                    //borra todo lo que contiene la tabla
+                    tablaHistorial.removeAll();
+                    //añade las columnas al modelo de la tabla
+                    String[] columnas = {"", "ID", "Juicio clínico", "Fecha", "Pagado", "ID tratamiento", "ID Mascota", "ID veterinario"};
+                    DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+                    //envía al servidor el idhistorial y el idmascota
+                    out.writeUTF("¿" + idhistorial + "+" + m.getValueAt(tablaHistorial.getSelectedRow(), 6));
+                    //recibe el número de líneas
+                    int num = in.readInt();
+                    inObj = new ObjectInputStream(sc.getInputStream());
+                    //bucle para guardar lineas de historial de una mascota
+                    for (int i = 0; i < num; i++) {
+                        HistorialClinico hc = (HistorialClinico) inObj.readObject();
 
-                    String[] filas = {"", hc.getIdhistorialclinico() + "", hc.getJuicicoclinico(), hc.getFecha().toString(), hc.getPagado(),
-                        hc.getIdtratamiento() + "", hc.getIdmascota() + "", hc.getIdveterinario() + ""};
-                    //se añade las filas al modelo
-                    modelo.addRow(filas);
+                        String[] filas = {"", hc.getIdhistorialclinico() + "", hc.getJuicicoclinico(), hc.getFecha().toString(), hc.getPagado(),
+                            hc.getIdtratamiento() + "", hc.getIdmascota() + "", hc.getIdveterinario() + ""};
+                        //se añade las filas al modelo
+                        modelo.addRow(filas);
 
+                    }
+                    //se añade el modelo a la tabla
+                    tablaHistorial.setModel(modelo);
+
+                    //Ajustamos el ancho de la jtable
+                    resizeColumnWidth(tablaHistorial);
+                    tablaHistorial.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+                    inObj.close();
+                    out.close();
+                    in.close();
+
+                } catch (IOException | ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "Fallo en la conexión con el servidor");
                 }
-                //se añade el modelo a la tabla
-                tablaHistorial.setModel(modelo);
-
-                //Ajustamos el ancho de la jtable
-                resizeColumnWidth(tablaHistorial);
-                tablaHistorial.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-                inObj.close();
-                out.close();
-                in.close();
-
-            } catch (IOException | ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Fallo en la conexión con el servidor");
+            }else{
+                JOptionPane.showMessageDialog(null, "Este registro ya estaba pagado");
             }
         }
     }//GEN-LAST:event_btnPagarActionPerformed
