@@ -21,9 +21,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.help.HelpSetException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -75,7 +78,11 @@ public class FrPrincipal extends javax.swing.JFrame {
     public FrPrincipal() {
         //pongo titulo e imagen al Jframe
         setTitle("Clínica veterinaria");
-        setIconImage(new ImageIcon("src/recursos/logotipo.png").getImage());
+        try {
+            setIconImage(ImageIO.read(getClass().getResource("/recursos/logotipo.png")));
+        } catch (IOException ex) {
+            Logger.getLogger(FrPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         //Añadir paneles al JFrame
         this.add(panelAcceso);

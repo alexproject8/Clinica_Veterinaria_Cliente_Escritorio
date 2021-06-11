@@ -7,6 +7,10 @@ package principal;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,8 +23,12 @@ public class PanelBienvenida extends javax.swing.JPanel {
     //pongo la imagen de fondo del JPanel
     @Override
     public void paint(Graphics g) {
-        imagen = new ImageIcon("src/recursos/gato2.png").getImage();
-        g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        //imagen = new ImageIcon("src/recursos/gato2.png").getImage();
+        try {
+            g.drawImage(ImageIO.read(getClass().getResource("/recursos/gato2.png")), 0, 0, getWidth(), getHeight(), this);
+        } catch (IOException ex) {
+            Logger.getLogger(PanelAcceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setOpaque(false);
         super.paint(g);
     }
